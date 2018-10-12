@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, computed } from 'mobx';
 
 import { callMarvelApi } from '../api/MarvelApi';
 import { Store } from './Store';
@@ -44,7 +44,14 @@ class CharactersStore extends Store {
   @observable
   search = '';
 
+  @observable
+  selectedCharacterId = null;
+
   limit = 20;
+
+  @computed get selectedCharacter () {
+    return this.characters.find(({ id }: ICharacter) => this.selectedCharacterId === id);
+  }
 
   getCharacters = async (
     query: ICharactersQuery = {},
