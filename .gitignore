@@ -3,7 +3,19 @@
 # expo
 .expo/
 /ios/build
-/android/app/build
+
+# Android/IntelliJ
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+android/.project
+android/**/.project
+android/.settings
+android/**/.settings
+
 
 # dependencies
 /node_modules

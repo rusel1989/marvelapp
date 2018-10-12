@@ -6,10 +6,12 @@
     "@types/jest": "^22.2.3",
     "@types/react": "^16.3.14",
     "@types/react-native": "^0.55.14",
+    "@types/react-navigation": "^2.0.20",
     "@types/react-test-renderer": "^16.0.1",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "jest": "^23.6.0",
     "jest-react-native": "^18.0.0",
+    "prettier": "1.14.2",
     "react-native-scripts-ts": "1.15.0",
     "react-native-typescript-transformer": "^1.2.3",
     "react-test-renderer": "16.3.1",
@@ -19,6 +21,7 @@
   },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start --config ../../../../rn-cli.config.js",
+    "format": "prettier app/**/*.{ts,tsx} --write",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest"
@@ -47,7 +50,14 @@
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "md5": "^2.2.1",
+    "mobx": "^4.0",
+    "mobx-react": "^5.0",
+    "qs": "^6.5.2",
     "react": "16.3.1",
-    "react-native": "~0.55.2"
+    "react-native": "~0.55.2",
+    "react-navigation": "^2.13.0",
+    "styled-components": "^3.4.6"
   }
 }

@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { Provider } from 'mobx-react/native'
 
-export default class App extends React.Component<{}> {
+import { RootNavigator } from './app/navigation'
+import * as stores from './app/stores';
+
+export class App extends React.Component<{}> {
   render() {
     return (
-      <View>
-      </View>
+        <Provider {...stores}>
+          <RootNavigator />
+        </Provider>
     );
   }
 }
