@@ -1,0 +1,8 @@
+{
+    "marvelApi": {
+        "hostname": "http://gateway.marvel.com:80",
+        "basePath": "/v1/public",
+        "publicKey": "e7587164ce5671df6a6e8f669697c670",
+        "privateKey": "a6829c4241d841c8c4988da4b948a8ed93ac79cc"
+    }
+}
