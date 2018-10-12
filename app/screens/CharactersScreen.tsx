@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { inject, observer } from 'mobx-react/native';
 
-import { ICharactersStore } from '../stores/CharactersStore';
+import { ICharactersStore, ICharacter } from '../stores/CharactersStore';
 import { Row, Column } from '../components/Layout';
 import { Avatar } from '../components/Avatar';
 import SearchBox from '../components/SearchBox';
@@ -10,6 +10,7 @@ import SearchBox from '../components/SearchBox';
 interface CharactersScreenProps {
   charactersStore: ICharactersStore;
 }
+
 
 @inject('charactersStore')
 @observer
@@ -38,7 +39,7 @@ export class CharactersScreen extends Component<CharactersScreenProps> {
     }
   };
 
-  renderItem = ({ item }) => {
+  renderItem = ({ item }: { item: ICharacter}) => {
     return (
       <Row
         alignItems="center"
