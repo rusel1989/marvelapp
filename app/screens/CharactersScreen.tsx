@@ -11,7 +11,6 @@ interface CharactersScreenProps {
   charactersStore: ICharactersStore;
 }
 
-
 @inject('charactersStore')
 @observer
 export class CharactersScreen extends Component<CharactersScreenProps> {
@@ -28,9 +27,12 @@ export class CharactersScreen extends Component<CharactersScreenProps> {
   };
 
   onSearchSubmit = () => {
-    this.props.charactersStore.getCharacters({ 
-      nameStartsWith: this.props.charactersStore.search 
-    }, true);
+    this.props.charactersStore.getCharacters(
+      {
+        nameStartsWith: this.props.charactersStore.search,
+      },
+      true,
+    );
   };
 
   onEndReached = () => {
@@ -39,7 +41,7 @@ export class CharactersScreen extends Component<CharactersScreenProps> {
     }
   };
 
-  renderItem = ({ item }: { item: ICharacter}) => {
+  renderItem = ({ item }: { item: ICharacter }) => {
     return (
       <Row
         alignItems="center"

@@ -15,9 +15,9 @@ export interface ICharacter {
   description: string;
   modified: string;
   resourceURI: string;
-  thumbnail: { 
-    path:string; 
-    extension: string; 
+  thumbnail: {
+    path: string;
+    extension: string;
   };
   urls: [];
   comics: {};
@@ -46,7 +46,10 @@ class CharactersStore extends Store {
 
   limit = 20;
 
-  getCharacters = async (query: ICharactersQuery = {}, reset: boolean = false) => {
+  getCharacters = async (
+    query: ICharactersQuery = {},
+    reset: boolean = false,
+  ) => {
     if (!this.loading) {
       this.loading = true;
 
