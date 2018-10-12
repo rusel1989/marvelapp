@@ -1,0 +1,1 @@
+export { charactersStore } from './CharactersStore';
