@@ -1,7 +1,11 @@
 import styled from 'styled-components/native';
 
 export const Avatar = styled.Image`
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
+  height: ${(p) => `${p.size}px`};
+  width: ${(p) => `${p.size}px`};
+  border-radius: ${(p) => `${p.size / 2}px`};
 `;
+
+Avatar.defaultProps = {
+  size: 40,
+};

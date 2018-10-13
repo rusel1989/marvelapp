@@ -3,10 +3,10 @@ import { View, Text, FlatList, TouchableHighlight } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { inject, observer } from 'mobx-react/native';
 
-import { ICharactersStore, ICharacter } from '../stores/CharactersStore';
-import { Row, Column } from '../components/Layout';
-import { Avatar } from '../components/Avatar';
-import SearchBox from '../components/SearchBox';
+import { ICharactersStore, ICharacter } from '../../stores/CharactersStore';
+import { Row, Column } from '../../components/Layout';
+import { Avatar } from '../../components/Avatar';
+import SearchBox from '../../components/SearchBox';
 
 interface CharactersScreenProps {
   charactersStore: ICharactersStore;
