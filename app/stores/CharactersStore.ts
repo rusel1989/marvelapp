@@ -48,7 +48,7 @@ class CharactersStore extends Store {
   search = '';
 
   @observable
-  selectedCharacterId = null;
+  selectedCharacterId = '';
 
   limit = 20;
 
