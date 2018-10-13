@@ -29,6 +29,9 @@ export interface ICharacter {
 export interface ICharactersStore {
   characters: ICharacter[];
   search: string;
+  selectedCharacter?: ICharacter;
+  selectedCharacterId?: string;
+  setSelectedCharacterId: (s: string) => void;
   getCharacters: (q: ICharactersQuery, r: boolean) => void;
   setSearch: (v: string) => void;
   resetSearch: () => void;
@@ -49,9 +52,16 @@ class CharactersStore extends Store {
 
   limit = 20;
 
-  @computed get selectedCharacter () {
-    return this.characters.find(({ id }: ICharacter) => this.selectedCharacterId === id);
+  @computed
+  get selectedCharacter() {
+    return this.characters.find(
+      ({ id }: ICharacter) => this.selectedCharacterId === id,
+    );
   }
+
+  setSelectedCharacterId = (id: string) => {
+    this.selectedCharacterId = id;
+  };
 
   getCharacters = async (
     query: ICharactersQuery = {},

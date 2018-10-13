@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, TouchableHighlight } from 'react-native';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { inject, observer } from 'mobx-react/native';
 
 import { ICharactersStore, ICharacter } from '../stores/CharactersStore';
@@ -9,6 +10,7 @@ import SearchBox from '../components/SearchBox';
 
 interface CharactersScreenProps {
   charactersStore: ICharactersStore;
+  navigation: NavigationScreenProp<NavigationState>;
 }
 
 @inject('charactersStore')
@@ -41,28 +43,43 @@ export class CharactersScreen extends Component<CharactersScreenProps> {
     }
   };
 
+  onItemPress = (id: string) => {
+    this.props.charactersStore.setSelectedCharacterId(id);
+    this.props.navigation.navigate('CharacterDetail');
+  };
+
   renderItem = ({ item }: { item: ICharacter }) => {
     return (
-      <Row
-        alignItems="center"
-        paddingVertical={16}
-        borderBottomWidth={1}
-        backgroundColor="#FFF"
-        borderBottomColor="rgba(0,0,0,0.2)"
-      >
-        <Avatar
-          marginHorizontal={16}
-          source={{ uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }}
-        />
+      <TouchableHighlight onPress={() => this.onItemPress(item.id)}>
+        <Row
+          alignItems="center"
+          paddingVertical={16}
+          borderBottomWidth={1}
+          backgroundColor="#FFF"
+          borderBottomColor="rgba(0,0,0,0.2)"
+        >
+          <Avatar
+            marginHorizontal={16}
+            source={{
+              uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+            }}
+          />
 
-        <Column>
-          <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{item.name}</Text>
-          <Text numberOfLines={1} ellipsizeMode="tail" style={{ fontSize: 14 }}>
-            {item.description || 'No description provided'}
-          </Text>
-        </Column>
-        <Column width={40} />
-      </Row>
+          <Column>
+            <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
+              {item.name}
+            </Text>
+            <Text
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              style={{ fontSize: 14 }}
+            >
+              {item.description || 'No description provided'}
+            </Text>
+          </Column>
+          <Column width={40} />
+        </Row>
+      </TouchableHighlight>
     );
   };
 
