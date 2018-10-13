@@ -33,13 +33,7 @@ export class CharacterDetailScreen extends Component<Props> {
   render() {
     return (
       <View>
-        <Text>
-          {JSON.stringify(
-            this.props.charactersStore.selectedCharacter,
-            null,
-            2,
-          )}
-        </Text>
+
       </View>
     );
   }
